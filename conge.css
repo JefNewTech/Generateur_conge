@@ -1,0 +1,140 @@
+html {
+    background: white;
+}
+
+@supports (font: -apple-system-body) {
+    html {
+        font: -apple-system-body !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background: #222;
+    }
+}
+
+body {
+    margin: 20px;
+    background: white;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #222;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    label {
+        color: white;
+    }
+}
+
+label {
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
+    margin: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+    legend {
+        color: white;
+        background-color: white;
+        background: #222;
+    }
+}
+
+legend {
+    padding: 0px 3px;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+@media (prefers-color-scheme: dark) {
+    h2 {
+        color: white;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    p {
+        color: white;
+    }
+}
+
+p {
+    margin-top: 0px;
+}
+
+canvas {
+    background: #fff;
+}
+
+
+Form {
+    width: 600px;
+    padding: 0px 30px;
+    margin: auto;
+}
+
+fieldset {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+em {
+    font-weight: bold;
+    font-style: normal;
+    color: #f00;
+}
+
+input:focus {
+    background: #eaeaea;
+}
+
+input,
+textarea {
+    width: 249px;
+    height: 20px;
+}
+
+textarea {
+    height: 100px;
+}
+
+select {
+    width: 254px;
+}
+
+input[type=radio] {
+    width: 15px;
+}
+
+input[type=submit] {
+    width: 150px;
+    padding: 10px;
+}
+
+snackbar {
+  min-width: 250px;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px 1px #fff;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+snackbar.show {
+  opacity: 1;
+}
