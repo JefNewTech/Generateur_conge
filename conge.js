@@ -1,35 +1,17 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 const {
     PDFDocument,
     StandardFonts
 } = PDFLib
-
 const $ = (...args) => document.querySelector(...args)
 const $$ = (...args) => document.querySelectorAll(...args)
 
-import pdfBase from './Conge.pdf'
-
-function getFormattedDate(date) {
-    const year = date.getFullYear()
-    const month = pad(date.getMonth() + 1) // Les mois commencent à 0
-    const day = pad(date.getDate())
-    return `${year}-${month}-${day}`
-}
-
-document.addEventListener('DOMContentLoaded', setReleaseDateTim)
-
-function setReleaseDateTime() {
-    const releaseDateInput = $('#date')
-    const loadedDate = new Date()
-    releaseDateInput.value = getFormattedDate(loadedDate)
-}
 
 function getProfile() {
     const fields = {}
-    for (const field of $$('#form-profile input')) {
-        if (field.id === 'field-debut') {
+    for (const field of $$('#form-conge input')) {
+        if (field.id == 'field-debut') {
             const debut = field.value.split('-')
-            fields[field.id.substring('field-'.length)] = `${debut[2]}/${debut[1]}`
+            fields[field.id.substring('field-'.length)] = '${debut[2]}/${debut[1]}'
         } else {
             fields[field.id.substring('field-'.length)] = field.value
         }
@@ -37,42 +19,21 @@ function getProfile() {
     return fields
 }
 
-function idealFontSize(font, text, maxWidth, minSize, defaultSize) {
-    let currentSize = defaultSize
-    let textWidth = font.widthOfTextAtSize(text, defaultSize)
-
-    while (textWidth > maxWidth && currentSize > minSize) {
-        textWidth = font.widthOfTextAtSize(text, --currentSize)
-    }
-
-    return textWidth > maxWidth ? null : currentSize
-}
-
 async function generatePdf(profile, reason) {
+    const pdfBase = 'Conge.pdf'
     const creationInstant = new Date()
     const creationDate = creationInstant.toLocaleDateString('fr-FR')
 
     const {
-        nom,
+        name,
         debut,
-        fin,
+        fin
     } = profile
-
-    const data = [
-        'Je sousigné: ${nom}',
-        'octroi: ${reason}',
-        '${debut} au ${fin}',
-    ].join(';\n')
 
     const existingPdfBytes = await fetch(pdfBase).then((res) => res.arrayBuffer())
 
     const pdfDoc = await PDFDocument.load(existingPdfBytes)
-
-    // set pdf metadata
-    pdfDoc.setTitle('Feuille de congé')
-    pdfDoc.setAuthor('JefNewTech')
-
-    const page1 = pdfDoc.getPages()[0]
+    const page = pdfDoc.getPages()[0]
 
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica)
     const drawText = (text, x, y, size = 11) => {
@@ -151,6 +112,7 @@ async function generatePdf(profile, reason) {
             drawText('d un congé pour mi-temps médical', 25, 200, 15)
             break
     }
+
     if (reason !== '') {
         const date = [
       String((new Date).getDate()).padStart(2, '0'),
@@ -160,9 +122,7 @@ async function generatePdf(profile, reason) {
 
         drawText(date, 405, 354)
     }
-
     const pdfBytes = await pdfDoc.save()
-
     return new Blob([pdfBytes], {
         type: 'application/pdf'
     })
@@ -170,49 +130,44 @@ async function generatePdf(profile, reason) {
 
 function downloadBlob(blob, fileName) {
     const link = document.createElement('a')
-    const url = URL.createObjectURL(blob)
+    var url = URL.createObjectURL(blob)
     link.href = url
     link.download = fileName
-    document.body.appendChild(link)
     link.click()
 }
 
 function getReason() {
-    const {
-        value
-    } = $('input[name="field-reason"]:checked')
-    localStorage.setItem('last-reason', value)
-    return value
+    const val = $('input[name="field-reason"]:checked').value
+    return val
 }
 
 const snackbar = $('#snackbar')
 
-$('#generate').addEventListener('click', async (event) => {
-event.preventDefault()
-const invalid = validateAriaFields()
-if (invalid) return
+$('#generate-btn').addEventListener('click', async (event) => {
+    event.preventDefault()
+    const invalid = validateAriaFields()
+    if (invalid) return
 
-const reason = getReason()
-const pdfBlob = await generatePdf(getProfile(), reason)
+    const reason = getReason()
+    const pdfBlob = await generatePdf(getProfile(), reason)
 
-const creationInstant = new Date()
-const creationDate = creationInstant.toLocaleDateString('fr-FR')
-const creationHour = creationInstant
-    .toLocaleTimeString('fr-FR', {
-        hour: '2-digit',
-        minute: '2-digit'
-    })
-    .replace(':', '-')
-downloadBlob(pdfBlob, `Feuille-${creationDate}_${creationHour}.pdf`)
+    const creationInstant = new Date()
+    const creationDate = creationInstant.toLocaleDateString('fr-CA')
+    const creationHour = creationInstant
+        .toLocaleTimeString('fr-FR', {
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+        .replace(':', '-')
+    downloadBlob(pdfBlob, `Feuille-${creationDate}_${creationHour}.pdf`)
 
-snackbar.classList.remove('d-none')
-setTimeout(() => snackbar.classList.add('show'), 100)
+    snackbar.classList.remove('d-none')
+    setTimeout(() => snackbar.classList.add('show'), 100)
 
-setTimeout(function () {
-    snackbar.classList.remove('show')
-    setTimeout(() => snackbar.classList.add('d-none'), 500)
-}, 6000)
-})
+    setTimeout(function () {
+        snackbar.classList.remove('show')
+        setTimeout(() => snackbar.classList.add('d-none'), 500)
+    }, 6000)
 })
 
 $$('input').forEach((input) => {
@@ -231,14 +186,14 @@ $$('input').forEach((input) => {
 })
 
 const conditions = {
-    '#nom': {
+    '#field-nom': {
         condition: 'length',
     },
-    '#debut': {
+    '#field-debut': {
         condition: 'pattern',
         pattern: /\d{4}-\d{2}-\d{2}/g,
     },
-    '#fin': {
+    '#field-fin': {
         condition: 'pattern',
         pattern: /\d{4}-\d{2}-\d{2}/g,
     },

@@ -70,11 +70,13 @@ p {
 }
 
 canvas {
-    background: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    background: #ffff;
 }
 
 
-Form {
+form {
     width: 600px;
     padding: 0px 30px;
     margin: auto;
@@ -114,27 +116,7 @@ input[type=radio] {
 }
 
 input[type=submit] {
-    width: 150px;
+    width: 200px;
+    height: 150px;
     padding: 10px;
-}
-
-snackbar {
-  min-width: 250px;
-  color: #fff;
-  text-align: center;
-  border-radius: 3px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  bottom: 30px;
-  font-size: 17px;
-  transform: translateX(-50%);
-  box-shadow: 0 0 8px 1px #fff;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
-}
-
-snackbar.show {
-  opacity: 1;
 }
