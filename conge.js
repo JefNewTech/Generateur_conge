@@ -1,4 +1,3 @@
-try {
     const {
         PDFDocument,
         StandardFonts
@@ -6,6 +5,7 @@ try {
     const $ = (...args) => document.querySelector(...args);
 
     const $$ = (...args) => document.querySelectorAll(...args);
+
     let canvas = document.getElementById("field-signature");
     let signaturePad = new SignaturePad(canvas);
 
@@ -16,7 +16,6 @@ try {
         return signatureData;
 
     }
-
 
     async function getProfile() {
         const fields = {}
@@ -63,17 +62,15 @@ try {
                 height: height,
             })
 
-
         }
         drawImage(signatureImageByte, 350, 110, 120, 30)
         drawText(profile.nom, 180, 235, 12)
-        if (profile.fin != '') {
+        if (profile.fin == "Invalid Date") {
+            drawText(`Le ${profile.debut}`, 25, 180)
+        } else {
             drawText(`Du ${profile.debut}`, 25, 180)
             drawText(`au ${profile.fin}`, 120, 180)
-        } else {
-            drawText(`Le ${profile.debut}`, 25, 180)
         }
-
 
         switch (reason) {
             case 'VaAn':
@@ -178,20 +175,15 @@ try {
             alert("Comment veut-tu que l'on sache quand tu prend congé si tu n'indique la date!");
             document.getElementById("field-debut").focus();
             return false
+        } else if (signaturePad.isEmpty()) {
+            alert("Si tu ne signe pas ton document, il n'est pas légitime.");
+            document.getElementById("field-signature").focus();
         } else {
             downloadBlob(pdfBlob, `${nom}_${reason}_${date}.pdf`);
+            alert("Le fichier pdf à été téléchargé sur votre appareil, aucune données n'est stocké sur le serveur.");
+            document.getElementById("field-nom").value = "";
+            document.getElementById("field-debut").value = "";
+            document.getElementById("field-fin").value = "";
+            signaturePad.clear();
         }
-
-//            snackbar.classList.remove('d-none')
-//            setTimeout(() => snackbar.classList.add('show'), 100)
-//
-//            setTimeout(function () {
-//                snackbar.classList.remove('show')
-//                setTimeout(() => snackbar.classList.add('d-none'), 500)
-//            }, 6000) 
     })
-    
-
-} catch (err) {
-    console.log(err)
-}
