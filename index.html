@@ -26,7 +26,7 @@
         </div>
         <h2>Générateur de feuille de congé.</h2>
         <form id="form-conge" action="#">
-            <p><i>Complétez le formulaire. Les champs marqué par </i><em>*</em> sont <em>obligatoires</em></p>
+            <p><i>Complétez le formulaire. Les champs marqués par </i><em>*</em> sont <em>obligatoires</em></p>
             <fieldset>
                 <legend>Contact</legend>
                 <label for="Nom et Prénom">Nom et prénom <em>*</em></label><br>
@@ -39,7 +39,7 @@
                 <input id="field-debut" name="debut" type="date" placeholder="">
                 <p>
                     <label for="Fin">Date de fin </label><br>
-                    <small>A remplir que si vous prenez congé plusieurs jours.</small><br>
+                    <small>A ne remplir que si vous prenez un congé étalé sur plusieurs jours.</small><br>
                     <input id="field-fin" name="fin" type="date" placeholder="">
             </fieldset>
             <fieldset>
@@ -71,12 +71,12 @@
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="field-reason" id="radio-COMiC" value="COMiC">
-                    <label class="form-check-label" for="radio-COMiC">Congé pour motif imperieux (Contractuel)</label>
+                    <label class="form-check-label" for="radio-COMiC">Congé pour motif impérieux (Contractuel)</label>
                 </div>
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="field-reason" id="radio-COMIS" value="COMIS">
-                    <label class="form-check-label" for="radio-COMIS">Congé pour motif imperieux (Statutaire)</label>
+                    <label class="form-check-label" for="radio-COMIS">Congé pour motif impérieux (Statutaire)</label>
                 </div>
 
                 <div class="form-check">
@@ -91,27 +91,27 @@
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="field-reason" id="radio-DisCm" value="DisCm">
-                    <label class="form-check-label" for="radio-DisCm">Dispense de Service Convocation médical</label>
+                    <label class="form-check-label" for="radio-DisCm">Dispense de Service: Convocation médical</label>
                 </div>
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="field-reason" id="radio-DisDo" value="DisDo">
-                    <label class="form-check-label" for="radio-DisDo">Dispense de Service Don de moelle, Organe</label>
+                    <label class="form-check-label" for="radio-DisDo">Dispense de Service: Don de moelle, Organe</label>
                 </div>
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="field-reason" id="radio-DisDp" value="DisDp">
-                    <label class="form-check-label" for="radio-DisDp">Dispense de Service Don de plaquettes</label>
+                    <label class="form-check-label" for="radio-DisDp">Dispense de Service: Don de plaquettes</label>
                 </div>
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="field-reason" id="radio-DisDs" value="DisDs">
-                    <label class="form-check-label" for="radio-DisDs">Dispense de Service Don de Sang</label>
+                    <label class="form-check-label" for="radio-DisDs">Dispense de Service: Don de Sang</label>
                 </div>
 
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="field-reason" id="radio-DisRm" value="DisRm">
-                    <label class="form-check-label" for="radio-DisRm">Dispense de Service RDV médical Service</label>
+                    <label class="form-check-label" for="radio-DisRm">Dispense de Service: RDV médical Service</label>
                 </div>
 
                 <div class="form-check">
@@ -163,11 +163,11 @@
         </form>
     </form>
     <footer class="footer text-center">
-        <small>
+        <h3>
             <a href="https://github.com/JefNewTech/Generateur_conge.git">Github</a>
             -
             <a href="https://jefnewtech.be">jefnewtech.be</a>
-        </small>
+        </h3>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>

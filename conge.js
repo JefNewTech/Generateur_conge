@@ -77,7 +77,7 @@
                 drawText('de vacance annuelle', 25, 200, 15)
                 break
             case 'ReHs':
-                drawText('de récupération d heures supplémentaires', 25, 200, 15)
+                drawText("de récupération d'heures supplémentaires", 25, 200, 15)
                 break
             case 'CoCi':
                 drawText('d un congé de Circonstance', 25, 200, 15)
@@ -89,28 +89,28 @@
                 drawText('d un congé pour force majeur non payé ( 6jours)', 25, 200, 15)
                 break
             case 'COMiC':
-                drawText('d un congé pour motif imperieux (Contractuel)', 25, 200, 15)
+                drawText('d un congé pour motif impérieux (Contractuel)', 25, 200, 15)
                 break
             case 'COMIS':
-                drawText('d un congé pour motif imperieux (Statutaire)', 25, 200, 15)
+                drawText('d un congé pour motif impérieux (Statutaire)', 25, 200, 15)
                 break
             case 'CoPa':
                 drawText('d un congé Syndical', 25, 200, 15)
                 break
             case 'DisCm':
-                drawText('d une dispense de Service Convocation médical', 25, 200, 15)
+                drawText('d une dispense de Service: Convocation médical', 25, 200, 15)
                 break
             case 'DisDo':
-                drawText('d une dispense de Service Don de moelle, Organe', 25, 200, 15)
+                drawText('d une dispense de Service: Don de moelle, Organe', 25, 200, 15)
                 break
             case 'DisDp':
-                drawText('d une dispense de Service Don de plaquettes', 25, 200, 15)
+                drawText('d une dispense de Service: Don de plaquettes', 25, 200, 15)
                 break
             case 'DisDs':
-                drawText('d une dispense de Service Don de Sang', 25, 200, 15)
+                drawText('d une dispense de Service: Don de Sang', 25, 200, 15)
                 break
             case 'DisRm':
-                drawText('d une dispense de Service RDV médical Service', 25, 200, 15)
+                drawText('d une dispense de Service: RDV médical Service', 25, 200, 15)
                 break
             case 'EnGr':
                 drawText('d un congé pour grève', 25, 200, 15)
@@ -168,19 +168,19 @@
         const date = new Date(document.getElementById("field-debut").value).toLocaleDateString('fr-FR');
 
         if (document.getElementById("field-nom").value == "") {
-            alert("Comment veut-tu que l'on sache qui prend congé si tu n'indique pas ton nom!");
+            alert("Tu n'aurais pas oublié d'indiquer ton nom et ton prénom ?");
             document.getElementById("field-nom").focus();
             return false
         } else if (document.getElementById("field-debut").value == "") {
-            alert("Comment veut-tu que l'on sache quand tu prend congé si tu n'indique la date!");
+            alert("Bon d'accord je te mets le congé quand je veux? ... allez n'oublie pas d'indiquer la date.");
             document.getElementById("field-debut").focus();
             return false
         } else if (signaturePad.isEmpty()) {
-            alert("Si tu ne signe pas ton document, il n'est pas légitime.");
+            alert("Moi je veux bien, mais si tu ne signe pas ... ce n'est pas valable.");
             document.getElementById("field-signature").focus();
         } else {
             downloadBlob(pdfBlob, `${nom}_${reason}_${date}.pdf`);
-            alert("Le fichier pdf à été téléchargé sur votre appareil, aucune données n'est stocké sur le serveur.");
+            alert("Le fichier pdf à été téléchargé sur ton appareil, n'oublie pas de le soumettre à ton suppérieur.");
             document.getElementById("field-nom").value = "";
             document.getElementById("field-debut").value = "";
             document.getElementById("field-fin").value = "";

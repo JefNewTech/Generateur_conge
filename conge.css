@@ -38,6 +38,7 @@ label {
     display: inline-block;
     vertical-align: top;
     margin: 6px;
+    font-size: 18px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -74,33 +75,6 @@ canvas {
     border: 1px solid #ced4da;
     border-radius: .25rem;
     background: #ffff;
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-device-width: 600px) {
-/*
-    form {
-        width: 400px;
-    }
-*/
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-device-width: 600px) {
-/*
-    form {
-        width: 400px;
-    }
-*/
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-device-width: 768px) {
-/*
-    form {
-        width: 800px;
-    }
-*/
 }
 
 form {
@@ -170,13 +144,13 @@ footer {
 }
 
 small {
-    font-size: xx-small;
+    font-size: small;
     color: black;
 }
 
 @media (prefers-color-scheme: dark) {
     small {
-        font-size: xx-small;
+        font-size: small;
         color: white;
     }
 }
