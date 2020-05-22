@@ -16,6 +16,7 @@ html {
 
 body {
     margin: 20px;
+    width: 100%;
     background: white;
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
@@ -75,9 +76,35 @@ canvas {
     background: #ffff;
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-device-width: 600px) {
+/*
+    form {
+        width: 400px;
+    }
+*/
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-device-width: 600px) {
+/*
+    form {
+        width: 400px;
+    }
+*/
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-device-width: 768px) {
+/*
+    form {
+        width: 800px;
+    }
+*/
+}
 
 form {
-    width: 600px;
+    width: 50%;
     padding: 0px 30px;
     margin: auto;
 }
@@ -115,8 +142,55 @@ input[type=radio] {
     width: 15px;
 }
 
-input[type=submit] {
-    width: 200px;
-    height: 150px;
-    padding: 10px;
+input[type=button] {
+    background-color: #008CBA;
+    width: 50%;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+footer {
+    margin-top: 40px;
+    background: white;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    footer {
+        background: #222;
+    }
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+small {
+    font-size: xx-small;
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    small {
+        font-size: xx-small;
+        color: white;
+    }
+}
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+.alert-primary {
+    text-decoration-color: blue;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
 }

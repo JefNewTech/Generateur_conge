@@ -12,6 +12,9 @@ The code was written by using these awesome open source projects:
 - [Twemoji](https://twemoji.twitter.com/)
 
 
-16-05 : Ajout des fichiers de base
-21-05 : Mise à jour et correction de bug, merci à Augustin pour sont aide précieuse
-22-05 : Corrections de bug.
+* 16-05 : - Ajout des fichiers de base
+* 21-05 : - Mise à jour et correction de bug. 
+          - Merci à Augustin pour sont aide précieuse
+* 22-05 : - Corrections de bug.
+          - Correction de l'affichage sur les périphériques  
+            
