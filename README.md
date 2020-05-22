@@ -13,3 +13,5 @@ The code was written by using these awesome open source projects:
 
 
 16-05 : Ajout des fichiers de base
+21-05 : Mise à jour et correction de bug, merci à Augustin pour sont aide précieuse
+22-05 : Corrections de bug.
